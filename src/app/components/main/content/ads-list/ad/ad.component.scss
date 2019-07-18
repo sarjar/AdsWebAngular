@@ -1,0 +1,51 @@
+$font_family_label: Impact, 'Arial Narrow Bold', sans-serif;
+$bc_label: #a30a0a;
+$bc_items: #f1f1f1;
+
+.item-image-zoom.new {
+  &::before {
+    font-size: 20px;
+    text-align: center;
+    font-family: $font_family_label;
+    background-color: $bc_label;
+    background-image: linear-gradient(#a30a0a, #d41e1e);
+    content: 'NEW';
+    width: 65px;
+    height: 25px;
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+.content-item-card {
+  display: flex;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: left;
+  background-color: $bc_items;
+  .item-details {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 1rem;
+    * {
+      margin: 0 auto;
+    }
+  }
+  .item-actions * {
+    margin: 8px 8px 8px 0;
+  }
+  .item-image-zoom {
+    min-width: 150px;
+    min-height: 150px;
+    overflow: hidden;
+    img {
+      transition: transform 0.25s, visibility 0.25s ease-in;
+    }
+    &:hover {
+      img {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

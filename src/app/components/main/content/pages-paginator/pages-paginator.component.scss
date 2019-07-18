@@ -1,0 +1,25 @@
+$bc_btn: #ff4e4e;
+$bc_components: #fff;
+$bc_titles:#696969;
+
+.content-pages-pagination {
+  display: inline-block;
+  padding: 1rem 0;
+  a {
+    color: $bc_titles;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    &:hover {
+      &:not(.active) {
+        background-color: $bc_components;
+        border-radius: 5px;
+      }
+    }
+  }
+  a.active {
+    background-color: $bc_btn;
+    color: $bc_components;
+    border-radius: 5px;
+  }
+}

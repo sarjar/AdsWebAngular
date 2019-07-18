@@ -1,0 +1,56 @@
+<div class="create-ad-container">
+  <div class="title-field-box">
+    <h2>AD DETAILS</h2>
+  </div>
+  <form (submit)="saveAd(adForm)" #adForm="ngForm">
+    <div>
+      <label for="type">Type</label>
+      <select name="type" class="full-field-width" ngModel required>
+        <option value="women">Women</option>
+        <option value="men">Men</option>
+      </select>
+    </div>
+    <div>
+      <label for="title">Title</label>
+      <input
+        name="title"
+        type="text"
+        class="full-field-width"
+        ngModel
+        required
+      />
+    </div>
+    <div>
+      <label for="price">Price</label>
+      <input
+        name="price"
+        type="text"
+        class="full-field-width"
+        ngModel
+        required
+      />
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <textarea
+        name="description"
+        rows="5"
+        cols="20"
+        class="full-field-width"
+        ngModel
+        required
+      ></textarea>
+    </div>
+    <div>
+      <label for="image">Image</label>
+      <select class="full-field-width" name="image" ngModel required>
+        <option value="https://picsum.photos/150">Dark shirt</option>
+        <option value="https://picsum.photos/150">Grey sweater</option>
+        <option value="https://picsum.photos/150">Blue Jeans</option>
+      </select>
+    </div>
+  </form>
+  <div id="ad-details-form">
+    <button class="button" type="submit">Save</button>
+  </div>
+</div>
