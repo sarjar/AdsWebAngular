@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Ad } from '../main/content/ads-list/ad/ad.model';
 import { AdsService } from 'src/app/services/ads.service';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-editor',
@@ -10,17 +11,36 @@ import { AdsService } from 'src/app/services/ads.service';
 })
 export class EditorComponent implements OnInit {
   private today = new Date();
+  private randomId = Math.floor(Math.random() * 1000);
 
-  constructor(private adsService: AdsService) {}
+  public ad: Ad;
+  private mode = 'create';
+  private id: string;
 
-  ngOnInit() {}
+  constructor(
+    private adsService: AdsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('id')) {
+        this.mode = 'edit';
+        this.id = paramMap.get('id');
+        this.adsService.getAd(this.id).subscribe(data => {
+          this.ad = data;
+        });
+      } else {
+        this.mode = 'create';
+        this.id = null;
+      }
+    });
+  }
 
   saveAd(form: NgForm) {
-    if (form.invalid) {
-      return;
-    }
     const ad: Ad = {
-      id: null,
+      id: this.randomId + '',
       type: form.value.type,
       title: form.value.title,
       price: form.value.price,
@@ -28,8 +48,15 @@ export class EditorComponent implements OnInit {
       image: form.value.image,
       date: this.setCurrentDate()
     };
+    if (this.mode === 'create') {
+      this.adsService.addAd(ad).subscribe(() => {});
+    } else {
+      this.adsService.updateAd(this.id, ad);
+    }
+  }
 
-    this.adsService.addAd(ad);
+  onDeleteAd(id: string) {
+    this.adsService.deleteAd(id);
   }
 
   private setCurrentDate() {

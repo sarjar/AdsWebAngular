@@ -2,10 +2,10 @@
   <div class="title-field-box">
     <h2>AD DETAILS</h2>
   </div>
-  <form (submit)="saveAd(adForm)" #adForm="ngForm">
+  <form (ngSubmit)="saveAd(adForm)" #adForm="ngForm">
     <div>
       <label for="type">Type</label>
-      <select name="type" class="full-field-width" ngModel required>
+      <select name="type" [ngModel]="ad.type" class="full-field-width" required>
         <option value="women">Women</option>
         <option value="men">Men</option>
       </select>
@@ -14,9 +14,9 @@
       <label for="title">Title</label>
       <input
         name="title"
+        [ngModel]="ad.title"
         type="text"
         class="full-field-width"
-        ngModel
         required
       />
     </div>
@@ -24,9 +24,9 @@
       <label for="price">Price</label>
       <input
         name="price"
+        [ngModel]="ad.price"
         type="text"
         class="full-field-width"
-        ngModel
         required
       />
     </div>
@@ -34,23 +34,36 @@
       <label for="description">Description</label>
       <textarea
         name="description"
+        [ngModel]="ad.description"
         rows="5"
         cols="20"
         class="full-field-width"
-        ngModel
         required
       ></textarea>
     </div>
     <div>
       <label for="image">Image</label>
-      <select class="full-field-width" name="image" ngModel required>
+      <select
+        class="full-field-width"
+        name="image"
+        [ngModel]="ad.image"
+        required
+      >
         <option value="https://picsum.photos/150">Dark shirt</option>
         <option value="https://picsum.photos/150">Grey sweater</option>
         <option value="https://picsum.photos/150">Blue Jeans</option>
       </select>
     </div>
+    <div class="ad-details-form-action-btns">
+      <button class="button" type="submit">Save</button>
+      <button
+        *ngIf="this.mode === 'edit'"
+        (click)="onDeleteAd(ad.id)"
+        class="button"
+        type="clear"
+      >
+        Delete
+      </button>
+    </div>
   </form>
-  <div id="ad-details-form">
-    <button class="button" type="submit">Save</button>
-  </div>
 </div>

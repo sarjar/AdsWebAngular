@@ -7,12 +7,9 @@ import { Ad } from './ad.model';
   styleUrls: ['./ad.component.scss']
 })
 export class AdComponent implements OnInit {
-
   @Input() ad: Ad;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
