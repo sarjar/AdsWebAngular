@@ -21,12 +21,17 @@ app.use((req, res, next) => {
 const ads = require('../src/assets/ad_data.json');
 
 app.get('/items', (req, res) => {
-  // const filteredAds = ads.filter(ad => ad.type === req.query.type);
-  res.status(200).send(JSON.stringify(ads));
+  console.log(req.query.type);
+  const filteredAds = ads.filter(ad => ad.type === req.query.type);
+  console.log(filteredAds);
+  res.status(200).send(JSON.stringify(filteredAds));
 });
 
 app.get('/items/:id', (req, res) => {
+  console.log(req.params.id);
+  //padaryti kad updatetintu i json fila
   const ad = ads.filter(a => a.id === parseInt(req.params.id));
+  console.log(ad);
   return res.send(ad[0]);
 });
 

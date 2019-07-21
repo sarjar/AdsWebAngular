@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdsService } from 'src/app/services/ads.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Ad } from './ad/ad.model';
 
 @Component({
@@ -8,16 +9,19 @@ import { Ad } from './ad/ad.model';
   styleUrls: ['./ads-list.component.scss']
 })
 export class AdsListComponent implements OnInit {
+  private type: string;
+  public ads: Ad[];
 
-  ads: Ad[];
-
-  constructor(private adsService: AdsService) {}
+  constructor(private adsService: AdsService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.adsService.getAds().subscribe(adData => {
-      this.ads = adData;
+    this.route.queryParamMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('type')) {
+        this.type = paramMap.get('type');
+        this.adsService.getAds(this.type).subscribe(adData => {
+          this.ads = adData;
+        });
+      }
     });
   }
-
-
 }

@@ -12,4 +12,11 @@ export class AdComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  itemIsNewerThan3Days = () => {
+    const today = new Date();
+    const finalDate = new Date(this.ad.date);
+    finalDate.setDate(finalDate.getDate() + 3);
+    if (today <= finalDate) { return; }
+  }
 }

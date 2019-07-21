@@ -1,11 +1,29 @@
 <header class="header">
-    <nav class="topnav">
-      <img [routerLink]="['/']" class="logo" src="./assets/images/visma.jpg" alt="logo" />
-      <ul class="nav-links">
-        <li><a [routerLink]="['/add?type=men']">For men</a></li>
-        <li><a [routerLink]="['/add?type=women']">For women</a></li>
-        <li><a href="#">For children</a></li>
-      </ul>
-    </nav>
-    <a [routerLink]="['/add']" class="button" type="submit">Add New</a>
-  </header>
+  <nav class="topnav">
+    <img
+      [routerLink]="['/items']"
+      [queryParams]="{ type: 'men' }"
+      class="logo"
+      src="./assets/images/visma.jpg"
+      alt="logo"
+    />
+    <ul class="nav-links">
+      <li>
+        <a
+        [routerLink]="['/items']"
+        [queryParams]="{ type: 'men' }"
+        routerLinkActive="active-link">For men</a>
+      </li>
+      <li>
+        <a
+        [routerLink]="['/items']"
+        [queryParams]="{ type: 'women' }"
+        routerLinkActive="active-link">For women</a>
+      </li>
+      <li>
+        <a href="#">For children</a>
+      </li>
+    </ul>
+  </nav>
+  <a [routerLink]="['/add']" class="button" type="submit">Add New</a>
+</header>

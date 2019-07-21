@@ -14,7 +14,7 @@ export class EditorComponent implements OnInit {
   private randomId = Math.floor(Math.random() * 1000);
 
   public ad: Ad;
-  private mode = 'create';
+  public mode = 'create';
   private id: string;
 
   constructor(
@@ -49,7 +49,7 @@ export class EditorComponent implements OnInit {
       date: this.setCurrentDate()
     };
     if (this.mode === 'create') {
-      this.adsService.addAd(ad).subscribe(() => {});
+      this.adsService.addAd(ad);
     } else {
       this.adsService.updateAd(this.id, ad);
     }

@@ -22,8 +22,8 @@ export class AdsService {
   constructor(private http: HttpClient, private router: Router) {}
 
   // Get Ads
-  getAds(): Observable<Ad[]> {
-    return this.http.get<Ad[]>(this.url);
+  getAds(adType: string): Observable<Ad[]> {
+    return this.http.get<Ad[]>(`${this.url}?type=${adType}`);
   }
 
   // Get Ad by id
@@ -32,8 +32,16 @@ export class AdsService {
   }
 
   // Add Ad
-  addAd(ad: Ad): Observable<Ad> {
-    return this.http.post<Ad>(`${this.url}/add`, ad, httpOptions);
+  // addAd(ad: Ad): Observable<Ad> {
+  //   return this.http.post<Ad>(`${this.url}/add`, ad, httpOptions);
+  // }
+
+  addAd(ad: Ad) {
+    return this.http
+      .post<Ad>(`${this.url}/add`, ad, httpOptions)
+      .subscribe(() => {
+        this.router.navigate(['/']);
+      });
   }
 
   // Update Ad

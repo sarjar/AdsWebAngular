@@ -2,10 +2,10 @@
   <div class="title-field-box">
     <h2>AD DETAILS</h2>
   </div>
-  <form (ngSubmit)="saveAd(adForm)" #adForm="ngForm">
+  <form (submit)="saveAd(adForm)" #adForm="ngForm">
     <div>
       <label for="type">Type</label>
-      <select name="type" [ngModel]="ad.type" class="full-field-width" required>
+      <select name="type" [ngModel]="ad?.type" class="full-field-width" required>
         <option value="women">Women</option>
         <option value="men">Men</option>
       </select>
@@ -14,7 +14,7 @@
       <label for="title">Title</label>
       <input
         name="title"
-        [ngModel]="ad.title"
+        [ngModel]="ad?.title"
         type="text"
         class="full-field-width"
         required
@@ -24,7 +24,7 @@
       <label for="price">Price</label>
       <input
         name="price"
-        [ngModel]="ad.price"
+        [ngModel]="ad?.price"
         type="text"
         class="full-field-width"
         required
@@ -34,7 +34,7 @@
       <label for="description">Description</label>
       <textarea
         name="description"
-        [ngModel]="ad.description"
+        [ngModel]="ad?.description"
         rows="5"
         cols="20"
         class="full-field-width"
@@ -46,7 +46,7 @@
       <select
         class="full-field-width"
         name="image"
-        [ngModel]="ad.image"
+        [ngModel]="ad?.image"
         required
       >
         <option value="https://picsum.photos/150">Dark shirt</option>
