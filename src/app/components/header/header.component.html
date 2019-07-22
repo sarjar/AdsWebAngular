@@ -1,24 +1,21 @@
 <header class="header">
   <nav class="topnav">
     <img
-      [routerLink]="['/items']"
-      [queryParams]="{ type: 'men' }"
+      [routerLink]="['/items', 'men']"
       class="logo"
       src="./assets/images/visma.jpg"
       alt="logo"
     />
     <ul class="nav-links">
       <li>
-        <a
-        [routerLink]="['/items']"
-        [queryParams]="{ type: 'men' }"
-        routerLinkActive="active-link">For men</a>
+        <a [routerLink]="['/items', 'men']" routerLinkActive="active-link"
+          >For men</a
+        >
       </li>
       <li>
-        <a
-        [routerLink]="['/items']"
-        [queryParams]="{ type: 'women' }"
-        routerLinkActive="active-link">For women</a>
+        <a [routerLink]="['/items', 'women']" routerLinkActive="active-link"
+          >For women</a
+        >
       </li>
       <li>
         <a href="#">For children</a>

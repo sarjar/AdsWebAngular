@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Ad } from '../main/content/ads-list/ad/ad.model';
 import { AdsService } from 'src/app/services/ads.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { today } from 'src/app/services/constants';
 
 @Component({
   selector: 'app-editor',
@@ -10,11 +11,10 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
   styleUrls: ['./editor.component.scss']
 })
 export class EditorComponent implements OnInit {
-  private today = new Date();
   private randomId = Math.floor(Math.random() * 1000);
 
-  public ad: Ad;
-  public mode = 'create';
+  ad: Ad;
+  createMode: boolean;
   private id: string;
 
   constructor(
@@ -24,15 +24,16 @@ export class EditorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // this.ad = new Ad();
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('id')) {
-        this.mode = 'edit';
+        this.createMode = false;
         this.id = paramMap.get('id');
         this.adsService.getAd(this.id).subscribe(data => {
           this.ad = data;
         });
       } else {
-        this.mode = 'create';
+        this.createMode = true;
         this.id = null;
       }
     });
@@ -48,24 +49,28 @@ export class EditorComponent implements OnInit {
       image: form.value.image,
       date: this.setCurrentDate()
     };
-    if (this.mode === 'create') {
-      this.adsService.addAd(ad);
-    } else {
-      this.adsService.updateAd(this.id, ad);
-    }
+
+    const save = this.createMode
+      ? this.adsService.addAd(ad)
+      : this.adsService.updateAd(this.id, ad);
+    save.subscribe(() => {
+      this.backToHomePage();
+    });
   }
 
   onDeleteAd(id: string) {
-    this.adsService.deleteAd(id);
+    this.adsService.deleteAd(id).subscribe(() => {
+      this.backToHomePage();
+    });
+  }
+
+  private backToHomePage() {
+    this.router.navigate(['/']);
   }
 
   private setCurrentDate() {
     return (
-      this.today.getFullYear() +
-      '-' +
-      (this.today.getMonth() + 1) +
-      '-' +
-      this.today.getDate()
+      today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
     );
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { newDaysPeriod, today } from 'src/app/services/constants';
 import { Ad } from './ad.model';
 
 @Component({
@@ -6,6 +7,7 @@ import { Ad } from './ad.model';
   templateUrl: './ad.component.html',
   styleUrls: ['./ad.component.scss']
 })
+
 export class AdComponent implements OnInit {
   @Input() ad: Ad;
 
@@ -13,10 +15,9 @@ export class AdComponent implements OnInit {
 
   ngOnInit() {}
 
-  itemIsNewerThan3Days = () => {
-    const today = new Date();
+  itemIsNew(): boolean {
     const finalDate = new Date(this.ad.date);
-    finalDate.setDate(finalDate.getDate() + 3);
-    if (today <= finalDate) { return; }
+    finalDate.setDate(finalDate.getDate() + newDaysPeriod);
+    return today <= finalDate;
   }
 }

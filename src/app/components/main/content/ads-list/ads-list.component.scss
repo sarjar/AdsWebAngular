@@ -1,3 +1,6 @@
+$bc_components: #fff;
+$bc_spinner: #ff4e4e;
+
 .no-ads-message {
   font-weight: 500;
   font-size: 16px;
@@ -5,4 +8,44 @@
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
+}
+
+.spinner-container {
+  display: contents;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $bc_spinner;
+
+  .loading {
+    margin: 30% auto;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(to left top, $bc_spinner 0%, $bc_components 100%);
+    display: block;
+    border-radius: 50%;
+    animation: rotating 2s linear infinite;
+
+    &:before {
+      content: '';
+      width: 48px;
+      height: 48px;
+      background-color: $bc_components;
+      display: block;
+      border-radius: 50%;
+      position: absolute;
+      top: 8px;
+      left: 8px;
+    }
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -1,5 +1,5 @@
 <div id="content" class="ad-list">
-  <div class="spinner-container" id="spinner">
+  <div *ngIf="this.isLoadingItems" class="spinner-container">
     <span class="loading"></span>
   </div>
   <app-ad *ngFor="let ad of ads" [ad]="ad"></app-ad>
@@ -7,4 +7,3 @@
 <!-- <div *ngIf="ads.length <= 0" class="no-ads-message">
     <p>THERE ARE NO ADS</p>
 </div> -->
-

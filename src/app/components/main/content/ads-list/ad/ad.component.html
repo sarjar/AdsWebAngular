@@ -1,10 +1,5 @@
 <div class="content-item-card">
-  <div
-    [ngClass]="{
-      'item-image-zoom new': itemIsNewerThan3Days(),
-      'item-image-zoom': !itemIsNewerThan3Days()
-    }"
-  >
+  <div [ngClass]="{ 'new': itemIsNew() }" class="item-image-zoom">
     <img src="{{ ad.image }}" alt="Random Img" />
   </div>
   <div class="item-details">

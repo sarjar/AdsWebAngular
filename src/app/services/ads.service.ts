@@ -26,43 +26,24 @@ export class AdsService {
     return this.http.get<Ad[]>(`${this.url}?type=${adType}`);
   }
 
-  // Get Ad by id
+  // Get Ad
   getAd(id: string): Observable<Ad> {
     return this.http.get<Ad>(`${this.url}/${id}`);
   }
 
   // Add Ad
-  // addAd(ad: Ad): Observable<Ad> {
-  //   return this.http.post<Ad>(`${this.url}/add`, ad, httpOptions);
-  // }
-
-  addAd(ad: Ad) {
-    return this.http
-      .post<Ad>(`${this.url}/add`, ad, httpOptions)
-      .subscribe(() => {
-        this.router.navigate(['/']);
-      });
+  addAd(ad: Ad): Observable<Ad> {
+    return this.http.post<Ad>(`${this.url}/add`, ad, httpOptions);
   }
 
   // Update Ad
-  // updateAd(id: string, ad: Ad): Observable<Ad> {
-  //   return this.http.put<Ad>(`${this.url}/${ad.id}`, ad, httpOptions);
-  // }
-
-  // Update Ad
-  updateAd(id: string, ad: Ad) {
-    return this.http
-      .put<Ad>(`${this.url}/${id}`, ad, httpOptions)
-      .subscribe(() => {
-        this.router.navigate(['/']);
-      });
+  updateAd(id: string, ad: Ad): Observable<Ad> {
+    return this.http.put<Ad>(`${this.url}/${id}`, ad, httpOptions);
   }
 
   // Delete Ad
-  deleteAd(id: string) {
+  deleteAd(id: string): Observable<Ad> {
     const url = `${this.url}/${id}`;
-    return this.http.delete<Ad>(url, httpOptions).subscribe(() => {
-      this.router.navigate(['/']);
-    });
+    return this.http.delete<Ad>(url, httpOptions);
   }
 }

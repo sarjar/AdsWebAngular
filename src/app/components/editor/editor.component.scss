@@ -1,6 +1,3 @@
-$bc_body: #e9e9e9;
-$bc_titles: #696969;
-
 .create-ad-container {
   display: flex;
   clear: both;
@@ -9,24 +6,27 @@ $bc_titles: #696969;
   margin: auto;
   padding: 16px;
 }
-form {
-  div {
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .full-field-width {
-    width: 100%;
-    clear: both;
-    background-color: $bc_body;
-    color: $bc_titles;
-    border-radius: 2px;
-    padding: 5px;
-  }
-  .ad-details-form-action-btns {
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-  }
+.form-group {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.full-field-width {
+  width: 100%;
+  min-width: 300px;
+  clear: both;
+  background-color: #e9e9e9;
+  border-radius: 2px;
+  padding: 5px;
+}
+.alert-message {
+  color: red;
+  font-size: small;
+}
+
+.form-action-btns {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
 }

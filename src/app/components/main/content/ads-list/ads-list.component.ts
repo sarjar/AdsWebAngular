@@ -8,20 +8,30 @@ import { Ad } from './ad/ad.model';
   templateUrl: './ads-list.component.html',
   styleUrls: ['./ads-list.component.scss']
 })
+
 export class AdsListComponent implements OnInit {
   private type: string;
   public ads: Ad[];
+  isLoadingItems: boolean;
 
-  constructor(private adsService: AdsService, private route: ActivatedRoute) {}
+  constructor(
+    private adsService: AdsService,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('type')) {
-        this.type = paramMap.get('type');
-        this.adsService.getAds(this.type).subscribe(adData => {
-          this.ads = adData;
-        });
-      }
-    });
+    this.isLoadingItems = true;
+    setTimeout(() => {
+      /** spinner ends after 2 seconds */
+      this.route.paramMap.subscribe((paramMap: ParamMap) => {
+        if (paramMap.has('type')) {
+          this.type = paramMap.get('type');
+          this.adsService.getAds(this.type).subscribe(adData => {
+            this.ads = adData;
+          });
+        }
+      });
+      this.isLoadingItems = false;
+    }, 1000);
   }
 }

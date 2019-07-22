@@ -3,24 +3,30 @@
     <h2>AD DETAILS</h2>
   </div>
   <form (submit)="saveAd(adForm)" #adForm="ngForm">
-    <div>
+    <div class="form-group">
       <label for="type">Type</label>
-      <select name="type" [ngModel]="ad?.type" class="full-field-width" required>
+      <select
+        name="type"
+        [ngModel]="ad?.type"
+        class="full-field-width"
+        required
+      >
         <option value="women">Women</option>
         <option value="men">Men</option>
       </select>
     </div>
-    <div>
+    <div class="form-group">
       <label for="title">Title</label>
       <input
         name="title"
         [ngModel]="ad?.title"
         type="text"
         class="full-field-width"
+        #title="ngModel"
         required
       />
     </div>
-    <div>
+    <div class="form-group">
       <label for="price">Price</label>
       <input
         name="price"
@@ -30,7 +36,7 @@
         required
       />
     </div>
-    <div>
+    <div class="form-group">
       <label for="description">Description</label>
       <textarea
         name="description"
@@ -41,7 +47,7 @@
         required
       ></textarea>
     </div>
-    <div>
+    <div class="form-group">
       <label for="image">Image</label>
       <select
         class="full-field-width"
@@ -54,14 +60,13 @@
         <option value="https://picsum.photos/150">Blue Jeans</option>
       </select>
     </div>
-    <div class="ad-details-form-action-btns">
+    <div class="form-action-btns">
       <button class="button" type="submit">Save</button>
       <button
-        *ngIf="this.mode === 'edit'"
+        *ngIf="!this.createMode"
         (click)="onDeleteAd(ad.id)"
         class="button"
-        type="clear"
-      >
+        type="button">
         Delete
       </button>
     </div>

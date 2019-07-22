@@ -4,8 +4,8 @@ import { MainComponent } from './components/main/main.component';
 import { EditorComponent } from './components/editor/editor.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/items?type=men', pathMatch: 'full' },
-  { path: 'items', component: MainComponent },
+  { path: '', redirectTo: '/items/men', pathMatch: 'full' },
+  { path: 'items/:type', component: MainComponent },
   { path: 'add', component: EditorComponent },
   { path: 'edit/:id', component: EditorComponent }
 ];
