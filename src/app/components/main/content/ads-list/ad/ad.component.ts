@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { newDaysPeriod, today } from 'src/app/services/constants';
+import { newDaysPeriod, today } from 'src/app/constants';
 import { Ad } from './ad.model';
 
 @Component({

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AdsService } from 'src/app/services/ads.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Ad } from './ad/ad.model';
 
 @Component({
@@ -8,30 +9,35 @@ import { Ad } from './ad/ad.model';
   templateUrl: './ads-list.component.html',
   styleUrls: ['./ads-list.component.scss']
 })
-
-export class AdsListComponent implements OnInit {
+export class AdsListComponent implements OnInit, OnDestroy {
   private type: string;
-  public ads: Ad[];
+  ads: Ad[];
   isLoadingItems: boolean;
+  getAdsSub: Subscription;
 
-  constructor(
-    private adsService: AdsService,
-    private route: ActivatedRoute,
-  ) {}
+  constructor(private adsService: AdsService, private route: ActivatedRoute) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.isLoadingItems = true;
     setTimeout(() => {
-      /** spinner ends after 2 seconds */
+      /** spinner ends after 1.5 seconds */
       this.route.paramMap.subscribe((paramMap: ParamMap) => {
         if (paramMap.has('type')) {
           this.type = paramMap.get('type');
-          this.adsService.getAds(this.type).subscribe(adData => {
-            this.ads = adData;
-          });
+          this.getAdsSub = this.adsService
+            .getAds(this.type)
+            .subscribe(adData => {
+              this.ads = adData;
+            });
         }
       });
       this.isLoadingItems = false;
-    }, 1000);
+    }, 1500);
+  }
+
+  ngOnDestroy(): void {
+    if (this.getAdsSub) {
+      this.getAdsSub.unsubscribe();
+    }
   }
 }

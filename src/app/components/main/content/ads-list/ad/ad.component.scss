@@ -49,3 +49,10 @@ $bc_items: #f1f1f1;
     }
   }
 }
+
+@media all and (max-width: 680px) {
+  .content-item-card {
+    text-align: -webkit-center;
+    flex-direction: column;
+  }
+}

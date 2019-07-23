@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Ad } from '../components/main/content/ads-list/ad/ad.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,16 +13,15 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AdsService {
-  private ads: Ad[] = [];
-  // private adsEdited = new Subject<Ad[]>();
-
   url = 'http://localhost:3000/items';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   // Get Ads
   getAds(adType: string): Observable<Ad[]> {
-    return this.http.get<Ad[]>(`${this.url}?type=${adType}`);
+    let params = new HttpParams();
+    params = params.append('type', adType);
+    return this.http.get<Ad[]>(this.url, { params });
   }
 
   // Get Ad
@@ -43,7 +41,6 @@ export class AdsService {
 
   // Delete Ad
   deleteAd(id: string): Observable<Ad> {
-    const url = `${this.url}/${id}`;
-    return this.http.delete<Ad>(url, httpOptions);
+    return this.http.delete<Ad>(`${this.url}/${id}`, httpOptions);
   }
 }

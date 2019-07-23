@@ -15,26 +15,34 @@ import { AdComponent } from './components/main/content/ads-list/ad/ad.component'
 import { ContentComponent } from './components/main/content/content.component';
 import { PagesPaginatorComponent } from './components/main/content/pages-paginator/pages-paginator.component';
 import { SortingPaginatorComponent } from './components/main/content/sorting-paginator/sorting-paginator.component';
+import { EditorModule } from './components/editor/editor.module';
+import { FooterModule } from './components/footer/footer.module';
+import { HeaderModule } from './components/header/header.module';
+import { MainModule } from './components/main/main.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    EditorComponent,
-    HeaderComponent,
-    FooterComponent,
-    MainComponent,
-    SidebarComponent,
-    AdsListComponent,
-    AdComponent,
-    ContentComponent,
-    PagesPaginatorComponent,
-    SortingPaginatorComponent
+    AppComponent
+    // EditorComponent,
+    // HeaderComponent,
+    // FooterComponent,
+    // MainComponent,
+    // SidebarComponent,
+    // AdsListComponent,
+    // AdComponent,
+    // ContentComponent,
+    // PagesPaginatorComponent,
+    // SortingPaginatorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    EditorModule,
+    FooterModule,
+    HeaderModule,
+    MainModule
   ],
   providers: [],
   bootstrap: [AppComponent]

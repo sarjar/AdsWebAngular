@@ -42,3 +42,16 @@ $bc_fields: #f5f7f7;
     }
   }
 }
+
+@media all and (max-width: 680px) {
+  .content-items-pagination {
+    padding: 3px 0;
+  }
+  .content-items-sort-pagination {
+    padding: 3px 0;
+  }
+  .content-pagination-fields {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}

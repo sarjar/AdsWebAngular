@@ -7,7 +7,7 @@
       <label for="type">Type</label>
       <select
         name="type"
-        [ngModel]="ad?.type"
+        [(ngModel)]="ad.type"
         class="form-control"
         #type="ngModel"
         required
@@ -23,7 +23,7 @@
       <label for="title">Title</label>
       <input
         name="title"
-        [ngModel]="ad?.title"
+        [(ngModel)]="ad.title"
         type="text"
         class="form-control"
         #title="ngModel"
@@ -37,7 +37,7 @@
       <label for="price">Price</label>
       <input
         name="price"
-        [ngModel]="ad?.price"
+        [(ngModel)]="ad.price"
         type="text"
         class="form-control"
         #price="ngModel"
@@ -51,7 +51,7 @@
       <label for="description">Description</label>
       <textarea
         name="description"
-        [ngModel]="ad?.description"
+        [(ngModel)]="ad.description"
         rows="5"
         cols="20"
         class="form-control"
@@ -61,7 +61,7 @@
       <label for="image">Image</label>
       <select
         name="image"
-        [ngModel]="ad?.image"
+        [(ngModel)]="ad.image"
         class="form-control"
         #image="ngModel"
         required

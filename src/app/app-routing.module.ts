@@ -5,13 +5,22 @@ import { EditorComponent } from './components/editor/editor.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/items/men', pathMatch: 'full' },
-  { path: 'items/:type', component: MainComponent },
-  { path: 'add', component: EditorComponent },
-  { path: 'edit/:id', component: EditorComponent }
+  {
+    path: 'items/:type',
+    loadChildren: './components/main/main.module#MainModule'
+  },
+  {
+    path: 'add',
+    loadChildren: './components/editor/editor.module#EditorModule'
+  },
+  {
+    path: 'edit/:id',
+    loadChildren: './components/editor/editor.module#EditorModule'
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
