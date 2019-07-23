@@ -40,6 +40,9 @@ export class EditorComponent implements OnInit {
   }
 
   saveAd(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
     const ad: Ad = {
       id: this.randomId + '',
       type: form.value.type,
