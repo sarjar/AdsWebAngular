@@ -1,0 +1,11 @@
+<div id="content-container">
+  <div *ngIf="!this.isLoading" class="quote-container">
+    <p>{{ quote }}</p>
+  </div>
+  <app-sorting-paginator></app-sorting-paginator>
+  <div *ngIf="this.isLoading" class="spinner-container">
+    <span class="loading"></span>
+  </div>
+  <app-ad-item *ngFor="let ad of ads" [ad]="ad"></app-ad-item>
+  <app-pages-paginator [ads]="ads"></app-pages-paginator>
+</div>

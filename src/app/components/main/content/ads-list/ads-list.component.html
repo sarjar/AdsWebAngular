@@ -1,9 +1,0 @@
-<div id="content" class="ad-list">
-  <div *ngIf="this.isLoading" class="spinner-container">
-    <span class="loading"></span>
-  </div>
-  <div *ngIf="!this.isLoading" class="quote-container">
-    <p>{{ quote }}</p>
-  </div>
-  <app-ad-item *ngFor="let ad of ads" [ad]="ad"></app-ad-item>
-</div>

@@ -5,7 +5,8 @@ import { AdsListComponent } from './ads-list.component';
 import { AdItemModule } from './ad-item/ad-item.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { PagesPaginatorModule } from './pages-paginator/pages-paginator.module';
+import { SortingPaginatorModule } from './sorting-paginator/sorting-paginator.module';
 
 @NgModule({
   declarations: [AdsListComponent],
@@ -13,8 +14,9 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    AdItemModule
+    AdItemModule,
+    PagesPaginatorModule,
+    SortingPaginatorModule
   ],
   exports: [
     AdsListComponent

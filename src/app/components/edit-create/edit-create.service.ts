@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Ad } from '../main/content/ads-list/ad-item/ad.model';
+import { Ad } from '../main/ads-list/ad-item/ad.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 

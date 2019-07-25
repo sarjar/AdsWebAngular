@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Ad } from '../main/content/ads-list/ad-item/ad.model';
+import { Ad } from '../main/ads-list/ad-item/ad.model';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { today } from 'src/app/constants';
 import { Subscription } from 'rxjs';
 import { EditCreateService } from './edit-create.service';
+import { today } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-edit-create',
