@@ -1,11 +1,8 @@
 <header class="header">
   <nav class="topnav">
-    <img
-      [routerLink]="['/items', 'men']"
-      class="logo"
-      src="./assets/images/visma.jpg"
-      alt="logo"
-    />
+    <a [routerLink]="['/items', 'men']">
+      <img class="logo" src="./assets/images/visma.jpg" alt="logo" />
+    </a>
     <ul class="nav-links">
       <li>
         <a [routerLink]="['/items', 'men']" routerLinkActive="active-link"

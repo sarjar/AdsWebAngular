@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SidebarComponent } from './sidebar.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import { AdItemComponent } from './ad-item.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 @NgModule({
-  declarations: [
-    SidebarComponent
-  ],
+  declarations: [AdItemComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
@@ -19,7 +15,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   exports: [
-    SidebarComponent
+    AdItemComponent
   ]
 })
-export class SidebarModule { }
+export class AdItemModule {}

@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PagesPaginatorRoutingModule } from './pages-paginator-routing.module';
 import { PagesPaginatorComponent } from './pages-paginator.component';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    PagesPaginatorComponent
-  ],
+  declarations: [PagesPaginatorComponent],
   imports: [
     CommonModule,
-    PagesPaginatorRoutingModule
-  ]
+    HttpClientModule,
+    FormsModule
+  ],
+  exports: [PagesPaginatorComponent]
 })
-export class PagesPaginatorModule { }
+export class PagesPaginatorModule {}

@@ -5,17 +5,17 @@
     "title": "Dolce Summer Jeans",
     "price": 99.99,
     "description": "The smaller your reality, the more convinced you are that you know everything.",
-    "image": "https://picsum.photos/150",
-    "date": "2019-07-21"
+    "image": "https://picsum.photos/150/180",
+    "date": "2019-07-25"
   },
   {
     "id": "751",
     "type": "men",
     "title": "MAN utility jacket",
-    "price": 18.5,
+    "price": 18.55,
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-    "image": "https://picsum.photos/150",
-    "date": "2019-07-22"
+    "image": "https://picsum.photos/150/180",
+    "date": "2019-07-25"
   },
   {
     "id": "245",
@@ -23,43 +23,43 @@
     "title": "Brooklyn Supply Co",
     "price": 11.99,
     "description": "More convinced you are that you know everything",
-    "image": "https://picsum.photos/150",
+    "image": "https://picsum.photos/150/180",
     "date": "2019-07-10"
   },
   {
     "id": "65",
     "type": "women",
     "title": "Mock top in broidery in sage",
-    "price": 118.1,
+    "price": 118.10,
     "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui sint occaecati cupiditate non provident",
-    "image": "https://picsum.photos/150",
-    "date": "2019-07-01"
+    "image": "https://picsum.photos/150/180",
+    "date": "2019-07-10"
   },
   {
     "id": "12",
     "type": "women",
     "title": "Volume sleeve low back top",
-    "price": 58.45,
+    "price": 58.80,
     "description": "Temporibus autem quibusdam et aut officiis debitis.",
-    "image": "https://picsum.photos/150",
+    "image": "https://picsum.photos/150/180",
     "date": "2019-06-20"
   },
   {
     "id": "990",
     "type": "men",
     "title": "River Island t-shirt",
-    "price": 52.2,
+    "price": 52.99,
     "description": "",
-    "image": "https://picsum.photos/150",
-    "date": "2019-06-29"
+    "image": "https://picsum.photos/150/180",
+    "date": "2019-07-25"
   },
   {
     "id": "7",
     "type": "men",
     "title": "HXTN Supply Utility",
-    "price": 49.99,
+    "price": 49.90,
     "description": "These cases are perfectly simple and easy to distinguish.",
-    "image": "https://picsum.photos/150",
+    "image": "https://picsum.photos/150/180",
     "date": "2019-06-10"
   }
 ]

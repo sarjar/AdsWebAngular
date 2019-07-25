@@ -1,9 +1,9 @@
 <div id="content" class="ad-list">
-  <div *ngIf="this.isLoadingItems" class="spinner-container">
+  <div *ngIf="this.isLoading" class="spinner-container">
     <span class="loading"></span>
   </div>
-  <app-ad *ngFor="let ad of ads" [ad]="ad"></app-ad>
+  <div *ngIf="!this.isLoading" class="quote-container">
+    <p>{{ quote }}</p>
+  </div>
+  <app-ad-item *ngFor="let ad of ads" [ad]="ad"></app-ad-item>
 </div>
-<!-- <div *ngIf="ads.length <= 0" class="no-ads-message">
-    <p>THERE ARE NO ADS</p>
-</div> -->

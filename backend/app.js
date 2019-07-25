@@ -27,7 +27,7 @@ app.get('/items', (req, res) => {
 
 app.get('/items/:id', (req, res) => {
   const ad = ads.filter(a => a.id === req.params.id);
-  return res.send(ad[0]);
+  return res.status(200).send(ad[0]);
 });
 
 app.post('/items/add', (req, res) => {
@@ -43,7 +43,7 @@ app.put('/items/:id', (req, res) => {
   ad.price = req.body.price;
   ad.description = req.body.description;
   ad.image = req.body.image;
-  res.send(ad);
+  res.status(201).send(ad);
 });
 
 app.delete('/items/:id', (req, res) => {
@@ -51,7 +51,7 @@ app.delete('/items/:id', (req, res) => {
   if (!ad) res.status(404).send('Ad does not exist.');
   const index = ads.indexOf(ad);
   ads.splice(index, 1);
-  res.send(ad);
+  res.status(200).send(ad);
 });
 
 module.exports = app;

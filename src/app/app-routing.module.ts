@@ -1,22 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
-import { EditorComponent } from './components/editor/editor.component';
+import { EditCreateComponent } from './components/edit-create/edit-create.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/items/men', pathMatch: 'full' },
+  { path: '', redirectTo: 'items/men', pathMatch: 'full' },
   {
     path: 'items/:type',
-    loadChildren: './components/main/main.module#MainModule'
+    component: MainComponent
   },
-  {
-    path: 'add',
-    loadChildren: './components/editor/editor.module#EditorModule'
-  },
-  {
-    path: 'edit/:id',
-    loadChildren: './components/editor/editor.module#EditorModule'
-  }
+  { path: 'add', component: EditCreateComponent },
+  { path: 'edit/:id', component: EditCreateComponent }
 ];
 
 @NgModule({

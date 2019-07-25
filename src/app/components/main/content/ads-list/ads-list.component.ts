@@ -1,43 +1,62 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AdsService } from 'src/app/services/ads.service';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Ad } from './ad/ad.model';
+import { forkJoin, Observable } from 'rxjs';
+import { tap, finalize } from 'rxjs/operators';
+import { Ad } from './ad-item/ad.model';
+import { AdsService } from './ads.service';
 
 @Component({
   selector: 'app-ads-list',
   templateUrl: './ads-list.component.html',
   styleUrls: ['./ads-list.component.scss']
 })
-export class AdsListComponent implements OnInit, OnDestroy {
-  private type: string;
+export class AdsListComponent implements OnInit {
   ads: Ad[];
-  isLoadingItems: boolean;
-  getAdsSub: Subscription;
+  quote: string;
+  isLoading = true;
 
   constructor(private adsService: AdsService, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.isLoadingItems = true;
-    setTimeout(() => {
-      /** spinner ends after 1.5 seconds */
-      this.route.paramMap.subscribe((paramMap: ParamMap) => {
-        if (paramMap.has('type')) {
-          this.type = paramMap.get('type');
-          this.getAdsSub = this.adsService
-            .getAds(this.type)
-            .subscribe(adData => {
-              this.ads = adData;
-            });
-        }
-      });
-      this.isLoadingItems = false;
-    }, 1500);
+  ngOnInit() {
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('type')) {
+        const type: string = paramMap.get('type');
+
+        const items: Observable<Ad[]> = this.loadItems(type);
+        const quote: Observable<any> = this.loadQuote();
+
+        /* forkJoin runs all observable sequences in parallel and collect their last elements. */
+        forkJoin([items, quote])
+          .pipe(
+            /* Tap operator takes a config object that allows us to hook onto the next,
+            error and complete event state of an Observable,
+            very much like we can do in the subscribe. - NOT USING IT THIS TIME*/
+            tap(result => console.log('tap', result)),
+            /* Finalize operator adds a callback to the teardown of the Observable,
+            via subscription.add(fn). This guarantees it will be called on
+            error, complete, and unsubscription. */
+            finalize(() => {
+              this.isLoading = false;
+            })
+          )
+          .subscribe(
+            result => {
+              this.ads = result[0];
+              this.quote = result[1].value.joke;
+            },
+            err => {
+              console.error(err);
+            }
+          );
+      }
+    });
   }
 
-  ngOnDestroy(): void {
-    if (this.getAdsSub) {
-      this.getAdsSub.unsubscribe();
-    }
+  loadItems(type: string): Observable<Ad[]> {
+    return this.adsService.getAds(type);
+  }
+
+  loadQuote(): Observable<any> {
+    return this.adsService.getQuote();
   }
 }

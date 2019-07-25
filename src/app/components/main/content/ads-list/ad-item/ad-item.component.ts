@@ -1,19 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { newDaysPeriod, today } from 'src/app/constants';
 import { Ad } from './ad.model';
 
 @Component({
-  selector: 'app-ad',
-  templateUrl: './ad.component.html',
-  styleUrls: ['./ad.component.scss']
+  selector: 'app-ad-item',
+  templateUrl: './ad-item.component.html',
+  styleUrls: ['./ad-item.component.scss']
 })
-
-export class AdComponent implements OnInit {
+export class AdItemComponent {
   @Input() ad: Ad;
-
-  constructor() {}
-
-  ngOnInit() {}
 
   itemIsNew(): boolean {
     const finalDate = new Date(this.ad.date);
